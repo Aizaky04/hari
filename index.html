@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Hari Valentine!</title>
+    <style>
+        body {
+            background-color: #fff0f5;
+            font-family: 'Arial', sans-serif;
+            color: #d6007b;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            padding: 20px; /* Memberikan ruang agar elemen tidak terpotong */
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #ff66b2;
+            word-wrap: break-word;
+        }
+
+        .heart {
+            font-size: 6em;
+            color: #ff3366;
+            animation: heartbeat 1s infinite;
+        }
+
+        .message {
+            font-size: 1.5em;
+            margin: 20px;
+            line-height: 1.8;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .button {
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.5em;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button:hover {
+            background-color: #d6007b;
+            transform: scale(1.1);
+        }
+
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff3366;
+            animation: confettiFall 3s infinite;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -50px;
+            width: 50px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #ff66b2;
+            animation: balloonFly 6s linear infinite;
+        }
+
+        .balloon:nth-child(1) {
+            background-color: #ff3366;
+            animation-duration: 5s;
+        }
+
+        .balloon:nth-child(2) {
+            background-color: #ffcc00;
+            animation-duration: 7s;
+        }
+
+        .balloon:nth-child(3) {
+            background-color: #66ff66;
+            animation-duration: 6s;
+        }
+
+        .balloon:nth-child(4) {
+            background-color: #66ccff;
+            animation-duration: 8s;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes balloonFly {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        .surprise-message {
+            display: none;
+            font-size: 1.8em;
+            color: #ff3366;
+            margin-top: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        /* Responsif untuk tablet dan HP */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .heart {
+                font-size: 4em;
+            }
+
+            .message {
+                font-size: 1.2em;
+                margin: 10px;
+            }
+
+            .button {
+                font-size: 1.2em;
+                padding: 15px 30px;
+            }
+
+            .surprise-message {
+                font-size: 1.5em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .heart {
+                font-size: 3.5em;
+            }
+
+            .message {
+                font-size: 1em;
+                margin: 5px;
+            }
+
+            .button {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
+
+            .surprise-message {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat Hari Valentine, Sayang!</h1>
+        <div class="heart">💖</div>
+        <p class="message">
+            Hari ini adalah hari yang spesial, dan aku ingin mengucapkan terima kasih
+            karena telah menjadi bagian dari hidupku. Semoga cinta kita bisa sampai
+            ke jenjang yang lebih serius. Aku sangat mencintaimu!
+        </p>
+        <button class="button" onclick="showSurprise()">Klik untuk Surprise! 🎁</button>
+        <div class="surprise-message" id="surpriseMessage">
+            Aku punya kejutan kecil untukmu! Terima kasih telah menjadi bagian dari hidupku yang terbaik! inget apapun yang terjadi selalu cerita,
+            maaf ya gak bisa bikin yang meriah meriah. I Love Youu 💖
+        </div>
+        <div class="confetti" id="confetti"></div>
+    </div>
+
+    <script>
+        function showSurprise() {
+            // Menampilkan pesan kejutan saat tombol diklik
+            const surpriseMessage = document.getElementById('surpriseMessage');
+            surpriseMessage.style.display = 'block';
+
+            // Memulai animasi confetti
+            const confetti = document.getElementById('confetti');
+            confetti.style.display = 'block';
+            createConfetti();
+
+            // Menambahkan balon terbang
+            createBalloons();
+        }
+
+        function createConfetti() {
+            // Membuat partikel confetti secara acak
+            const confettiContainer = document.getElementById('confetti');
+            const confettiCount = 100;
+            const colors = ['#ff3366', '#ff66b2', '#ffcc00', '#66ff66', '#66ccff'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confettiPiece = document.createElement('div');
+                const xPos = Math.random() * window.innerWidth;
+                const delay = Math.random() * 2;
+                const size = Math.random() * 10 + 5;
+
+                confettiPiece.style.left = `${xPos}px`;
+                confettiPiece.style.width = `${size}px`;
+                confettiPiece.style.height = `${size}px`;
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiPiece.style.animationDelay = `${delay}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
+        function createBalloons() {
+            // Membuat balon terbang
+            const balloonCount = 4;
+            for (let i = 0; i < balloonCount; i++) {
+                const balloon = document.createElement('div');
+                balloon.classList.add('balloon');
+                document.body.appendChild(balloon);
+            }
+        }
+    </script>
+</body>
+</html>
